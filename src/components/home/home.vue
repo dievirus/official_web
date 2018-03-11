@@ -1,11 +1,16 @@
 <template>
   <div>
-    5
+    <slider></slider>
   </div>
 </template>
 
 <script>
+	import Slider from 'components/slider/slider.vue'
+
   export default {
+  	components: {
+  		Slider
+  	}
   }
 </script>
 

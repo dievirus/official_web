@@ -8,6 +8,7 @@ const Donate = () => import('components/donate/donate')
 const Home = () => import('components/home/home')
 const Information = () => import('components/information/information')
 const Performance = () => import('components/performance/performance')
+const Introduce = () => import('components/about/introduce')
 
 Vue.use(Router)
 
@@ -23,7 +24,13 @@ export default new Router({
     },
     {
       path: '/about',
-      component: About
+      component: About,
+
+    },
+    {
+      path: '/introduce',
+      component: Introduce,
+      
     },
     {
       path: '/performance',
