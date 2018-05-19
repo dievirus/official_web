@@ -2,7 +2,7 @@
 
 body, html {
   line-height: 1;
-  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif, 'Droid Sans Fallback';
+  font-family: '微软雅黑','PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif, 'Droid Sans Fallback';
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   background: @color_background;
@@ -13,4 +13,30 @@ body, html {
 	height:0;
 	clear:both;
 	visibility:hidden
+}
+.ll {
+  float:left;
+}
+.rr {
+  float:right;
+}
+.h-title {
+  margin-top:80px;
+  font-size:32px;
+  color:@color_3;
+  text-align:center;
+}
+.h-title:after {
+  content:"";
+  display:block;
+  width:40px;
+  height:4px;
+  margin:20px auto 70px auto;
+  background:@color_background_1;
+}
+.nowrap {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+  display:inline-block;
 }
