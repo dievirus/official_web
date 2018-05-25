@@ -41,6 +41,7 @@
     background:#000;  
     .tab-wrap {
       width:1200px;
+      margin:0 auto;
     }
     img{
       display:inline-block;

@@ -83,6 +83,8 @@
     background:#f8f8f8;
     overflow: hidden;
     .business-wrap {
+      width:1200px;
+      margin:0 auto;
       .b-item {
         text-align:center;
         float:left;
