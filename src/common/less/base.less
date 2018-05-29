@@ -40,3 +40,114 @@ body, html {
   white-space:nowrap;
   display:inline-block;
 }
+.auto-width {
+  width:1200px;
+  margin:0 auto;
+}
+
+.nav {
+  background:@color_background_4;
+  .nav-wrap {
+    height:44px;
+    line-height:44px;
+    a {
+      font-size:16px;
+      color:@color_4;
+      text-decoration: none;
+      text-align: center;
+      &.router-link-active {
+        span {
+          display:inline-block;
+          height:41px;
+          padding:0 5px;
+          border-bottom:3px solid @color_background_1;
+          color:@color_5;
+        }
+      }
+    }
+  }
+}
+.banner {
+  margin-top:70px;
+  min-width:1200px;
+  position: relative;
+  img {
+    width:100%;
+    display:block;
+  }
+  .banner-content {
+    position: absolute;
+    width:362px;
+    top:50%;
+    left:50%;
+    margin-top:-92px;
+    margin-left:-181px;
+    h1 {
+      font-size:60px;
+      color:@color_2;
+      margin-bottom:15px;
+    }
+    .banner-text1 {
+      font-size:20px;
+      color:@color_2;
+      border-top:1px solid #fff;
+      border-bottom:1px solid #fff;
+      padding:10px 0;
+      .banner-text1-l {
+        border-right:1px solid rgba(255,255,255,.5);
+        width:50%;
+        text-align: left;
+      }
+    }
+    .banner-text2 {
+      font-size:18px;
+      color:@color_2;
+      opacity: .5;
+      padding:10px 0;
+      span {
+        width:33.3333%;
+      }
+      .banner-text2-m {
+        text-align: center;
+      }
+      .banner-text2-r {
+        text-align: right;
+      }
+    }
+    .banner-text3 {
+      font-size:14px;
+      color:@color_2;
+      opacity: .5;
+      text-align: center;
+      line-height:18px;
+    }
+  }
+}
+.sub-title {
+  font-size:36px;
+  color:@color_3;
+  text-align: center;
+  padding:40px 0 60px 0;
+  span {
+    border-bottom:2px solid #ddd;
+    position: relative;
+    padding-bottom:10px;
+  }
+  span:after {
+    content:"";
+    display:inline-block;
+    width:40px;
+    height:6px;
+    background:#000;
+    position: absolute;
+    left:50%;
+    bottom:-4px;
+    margin-left:-20px;
+  }
+}
+.content-a {
+  img {
+    margin-right:50px;
+    margin-bottom:50px;
+  }
+}
