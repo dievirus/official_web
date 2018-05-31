@@ -1,5 +1,5 @@
 <template>
-  <div class="about1">
+  <div class="about1 auto-width">
     <div class="sub-title">
       <span>公司介绍</span>
     </div>

@@ -1,5 +1,8 @@
 <template>
   <div class="footer">
+    <!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1562259513&site=qq&menu=yes"><img border="0" src="img/button_11.gif" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->
+
+  <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3080727502&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:3080727502:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
     <div class="footer-wrap">
       <div class="gongzhong">
         <img src="./image/test_code.png" alt="">
@@ -26,6 +29,8 @@
 <script>
   export default {
     
+
+    
   }
 </script>
 
@@ -37,6 +42,7 @@
     height:200px;
     background:#000;
     .footer-wrap {
+      height:200px;
       width:960px;
       margin:0 auto;
       position:relative;

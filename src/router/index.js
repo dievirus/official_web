@@ -12,6 +12,9 @@ const Introduce = () => import('components/about/introduce')
 const About = () => import('components/about/about')
 const About1 = () => import('components/about/about1')
 const About2 = () => import('components/about/about2')
+const About3 = () => import('components/about/about3')
+const About4 = () => import('components/about/about4')
+const About5 = () => import('components/about/about5')
 
 Vue.use(Router)
 
@@ -37,6 +40,18 @@ export default new Router({
         {
           path:'b',
           component: About2
+        },
+        {
+          path:'c',
+          component: About3
+        },
+        {
+          path:'d',
+          component: About4
+        },
+        {
+          path:'e',
+          component: About5
         },
       ]
     },

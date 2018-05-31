@@ -16,12 +16,15 @@
         <div class="banner-text3">The quality of survival to manage the efficiency of the development of intergrity</div>
       </div>
     </div>
-    <div class="nav-wrap auto-width clearfix about-wrap">
-      <router-link to="/about/a" class="ll"><span>公司介绍</span></router-link>
-      <router-link to="/about/b" class="ll"><span>发展历程</span></router-link>
-      <router-link to="/about/c" class="ll"><span>荣誉资质</span></router-link>
-      <router-link to="/about/d" class="ll"><span>大事记</span></router-link>
-      <router-link to="/about/e" class="ll"><span>联系方式</span></router-link>
+    <div class="nav-wrap clearfix about-wrap">
+      <div class="auto-width">
+        <router-link to="/about/a" class="ll"><span>公司介绍</span></router-link>
+        <router-link to="/about/b" class="ll"><span>发展历程</span></router-link>
+        <router-link to="/about/c" class="ll"><span>荣誉资质</span></router-link>
+        <router-link to="/about/d" class="ll"><span>大事记</span></router-link>
+        <router-link to="/about/e" class="ll"><span>联系方式</span></router-link>
+      </div>
+      
     </div>
     <router-view class="about-content"></router-view>
   </div>

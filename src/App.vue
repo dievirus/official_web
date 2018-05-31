@@ -2,7 +2,7 @@
   <div id="app">
     <tab></tab>
     <Sidebar></Sidebar>
-    <router-view></router-view>
+    <router-view class="content"></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -24,5 +24,8 @@
 <style scoped lang="less" rel="stylesheet/less">
   #app {
     min-width:1000px;
+    .content {
+      margin-bottom:200px;
+    }
   }
 </style>
