@@ -78,21 +78,21 @@
   .cooperation {
     background:@color_background_3;
     overflow:hidden;
-    width:1200px;
-    margin:0 auto 30px auto;
-    ul {
-      width:960px;
-      margin:0 auto;
-      .item {
-        cursor:pointer;
-        margin:15px;
-        .img-wrap {
-          width:210px;
-          height:140px;
-          background:#333;
+    .cooperation-wrap {
+      margin-bottom:50px;
+      ul {
+        width:960px;
+        margin:0 auto;
+        .item {
+          cursor:pointer;
+          margin:15px;
+          .img-wrap {
+            width:210px;
+            height:140px;
+            background:#333;
+          }
         }
+      }
     }
-    }
-    
   }
 </style>

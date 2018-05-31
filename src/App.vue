@@ -24,8 +24,5 @@
 <style scoped lang="less" rel="stylesheet/less">
   #app {
     min-width:1000px;
-    .content {
-      margin-bottom:200px;
-    }
   }
 </style>
