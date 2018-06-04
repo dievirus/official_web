@@ -17,12 +17,12 @@
       </div>
     </div>
     <div class="nav-wrap clearfix about-wrap">
-      <div class="auto-width">
-        <router-link to="/about/a" class="ll"><span>公司介绍</span></router-link>
-        <router-link to="/about/b" class="ll"><span>发展历程</span></router-link>
-        <router-link to="/about/c" class="ll"><span>荣誉资质</span></router-link>
-        <router-link to="/about/d" class="ll"><span>大事记</span></router-link>
-        <router-link to="/about/e" class="ll"><span>联系方式</span></router-link>
+      <div>
+        <router-link to="/about/a"><span>公司介绍</span></router-link>
+        <router-link to="/about/b"><span>发展历程</span></router-link>
+        <router-link to="/about/c"><span>荣誉资质</span></router-link>
+        <router-link to="/about/d"><span>大事记</span></router-link>
+        <router-link to="/about/e"><span>联系方式</span></router-link>
       </div>
       
     </div>
@@ -41,12 +41,53 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
-  .about-wrap {
-    a {
-      width:20%;
+  @import "~common/less/variable.less";
+
+  .banner-content {
+    position: absolute;
+    width:362px;
+    top:50%;
+    left:50%;
+    margin-top:-92px;
+    margin-left:-181px;
+    h1 {
+      font-size:60px;
+      color:@color_2;
+      margin-bottom:15px;
     }
-  }
-  .about-content {
-    background:#fff;
+    .banner-text1 {
+      font-size:20px;
+      color:@color_2;
+      border-top:1px solid #fff;
+      border-bottom:1px solid #fff;
+      padding:10px 0;
+      .banner-text1-l {
+        border-right:1px solid rgba(255,255,255,.5);
+        width:50%;
+        text-align: left;
+      }
+    }
+    .banner-text2 {
+      font-size:18px;
+      color:@color_2;
+      opacity: .5;
+      padding:10px 0;
+      span {
+        width:33.3333%;
+      }
+      .banner-text2-m {
+        text-align: center;
+      }
+      .banner-text2-r {
+        text-align: right;
+      }
+    }
+    .banner-text3 {
+      font-size:14px;
+      color:@color_2;
+      opacity: .5;
+      text-align: center;
+      line-height:18px;
+    }
   }
 </style>

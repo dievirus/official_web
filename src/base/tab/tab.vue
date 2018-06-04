@@ -6,9 +6,8 @@
         大划建筑
       </a>
       <router-link to="/home">公司首页</router-link>
-      <router-link to="/introduce">公司简介</router-link>
       <router-link to="/about">关于我们</router-link>
-      <router-link to="/2">公司业绩</router-link>
+      <router-link to="/achievement">公司业绩</router-link>
       <router-link to="/3">投资合作</router-link>
       <router-link to="/4">公司资讯</router-link>
       <router-link to="/5">爱心捐赠</router-link>

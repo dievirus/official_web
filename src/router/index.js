@@ -7,14 +7,20 @@ const Donate = () => import('components/donate/donate')
 const Home = () => import('components/home/home')
 const Information = () => import('components/information/information')
 const Performance = () => import('components/performance/performance')
-const Introduce = () => import('components/about/introduce')
 
+// 关于我们
 const About = () => import('components/about/about')
 const About1 = () => import('components/about/about1')
 const About2 = () => import('components/about/about2')
 const About3 = () => import('components/about/about3')
 const About4 = () => import('components/about/about4')
 const About5 = () => import('components/about/about5')
+
+// 公司业绩
+const Achievement = () => import('components/achievement/achievement')
+const Achievement1 = () => import('components/achievement/achievement1')
+const Achievement2 = () => import('components/achievement/achievement2')
+const Achievement3 = () => import('components/achievement/achievement3')
 
 Vue.use(Router)
 
@@ -56,9 +62,23 @@ export default new Router({
       ]
     },
     {
-      path: '/introduce',
-      component: Introduce,
-      
+      path: '/achievement',
+      component: Achievement,
+      redirect: '/achievement/a',
+      children: [
+        {
+          path:'a',
+          component: Achievement1
+        },
+        {
+          path:'b',
+          component: Achievement2
+        },
+        {
+          path:'c',
+          component: Achievement3
+        }
+      ]
     },
     {
       path: '/performance',
