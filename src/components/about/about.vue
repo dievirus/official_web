@@ -16,7 +16,7 @@
         <div class="banner-text3">The quality of survival to manage the efficiency of the development of intergrity</div>
       </div>
     </div>
-    <div class="nav-wrap clearfix about-wrap">
+    <div class="nav-wrap clearfix about-wrap auto-width">
       <div>
         <router-link to="/about/a"><span>公司介绍</span></router-link>
         <router-link to="/about/b"><span>发展历程</span></router-link>

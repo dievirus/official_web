@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Construction = () => import('components/construction/construction')
+// const Construction = () => import('components/construction/construction')
 const Cooperation = () => import('components/cooperation/cooperation')
 const Donate = () => import('components/donate/donate')
 const Home = () => import('components/home/home')
@@ -96,10 +96,10 @@ export default new Router({
       path: '/donate',
       component: Donate
     },
-    {
-      path: '/construction',
-      component: Construction
-    }
+    // {
+    //   path: '/construction',
+    //   component: Construction
+    // }
   ]
 })
 
