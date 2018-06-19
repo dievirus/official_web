@@ -36,6 +36,8 @@
   @import "~common/less/variable.less";
 
   .footer {
+    position: relative;
+    z-index: 100;
     min-width:1200px;
     height:200px;
     background:#000;

@@ -16,7 +16,7 @@
         <div class="banner-text3">The quality of survival to manage the efficiency of the development of intergrity</div>
       </div>
     </div>
-    <div class="nav-wrap clearfix about-wrap auto-width">
+    <div class="nav-wrap clearfix about-wrap">
       <div>
         <router-link to="/about/a"><span>公司介绍</span></router-link>
         <router-link to="/about/b"><span>发展历程</span></router-link>
@@ -26,7 +26,9 @@
       </div>
       
     </div>
-    <router-view class="about-content"></router-view>
+    <transition name="move">
+      <router-view class="about-content"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -90,4 +92,17 @@
       line-height:18px;
     }
   }
+  .move-enter-active, 
+    .move-leave-active {
+        transition: all .7s;
+    }
+
+    .move-enter,
+    .move-leave{
+        transform: translate3d(0px, 10px, 0);
+        opacity: 0;
+    }
+    .move-enter-to {
+      opacity: 1;
+    }
 </style>

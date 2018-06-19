@@ -1,18 +1,17 @@
 <template>
   <div class="pagination">
     <ul class="p-wrap clearfix">
-      <li class="prev" @mouseenter="mouseenterPrev" @mouseleave="mouseleavePrev" @click="goPage(currentPage-1)">
+      <li class="prev" :class="{'disabled':currentPage <= 1}" @mouseenter="mouseenterPrev" @mouseleave="mouseleavePrev" @click="goPage(currentPage-1)">
         <img v-show="!isPrev" src="./image/prev.png" alt="">
         <img v-show="isPrev" src="./image/prev_on.png" alt="">
       </li>
-      <li v-for="item in h" class="page" :class="{'active':item == currentPage}" @click="goPage(item)">{{item}}</li>
+      <li v-for="item in totalPage" :key="item" class="page" :class="{'active':item == currentPage}" @click="goPage(item)">{{item}}</li>
 
-      <li class="next" @mouseenter="mouseenterNext" @mouseleave="mouseleaveNext" @click="goPage(currentPage+1)">
+      <li class="next" :class="{'disabled':currentPage >= totalPage}" @mouseenter="mouseenterNext" @mouseleave="mouseleaveNext" @click="goPage(currentPage+1)">
         <img v-show="!isNext" src="./image/next.png" alt="">
         <img v-show="isNext" src="./image/next_on.png" alt="">
       </li>
     </ul>
-    <div>{{pageSize}}</div>
   </div>
 </template>
 
@@ -20,7 +19,6 @@
   export default {
     data() {
       return {
-        h:[1,2,3,4,5],
         isPrev:'',
         isNext:'',
         currentPage: 1
@@ -30,21 +28,37 @@
       pageSize: {
         type: Number,
         default: 1
+      },
+      totalPage: {
+        type: Number,
+        default:1
       }
     },
     methods: {
       goPage(index) {
+        if(index >= this.totalPage) {
+          index = this.totalPage
+        }
+        if(index <= 1) {
+          index = 1
+        }
         this.currentPage = index
         this.$emit('setPage', index)
       },
       mouseenterPrev() {
-        this.isPrev = true
+        if(this.currentPage > 1) {
+          this.isPrev = true
+        }
+        
       },
       mouseleavePrev() {
         this.isPrev = false
       },
       mouseenterNext() {
-        this.isNext = true
+        if(this.currentPage < this.totalPage) {
+          this.isNext = true
+        }
+        
       },
       mouseleaveNext() {
         this.isNext = false
@@ -57,6 +71,8 @@
   @import "~common/less/variable.less";
 
   .pagination {
+    margin-top:40px;
+    margin-bottom:80px;
     .p-wrap {
       text-align: center;
       li {
@@ -70,6 +86,9 @@
         color:@color_4;
         cursor: pointer;
         border-radius: 3px;
+        &.disabled {
+          pointer-events: none;
+        }
         &.page {
           border:1px solid #eaeaea;
         }

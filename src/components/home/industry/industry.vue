@@ -91,6 +91,8 @@
     overflow:hidden;
     background:url('./image/bg.jpg');
     width:100%;
+    position: relative;
+    z-index: 100;
     background:cover;
     .industry-wrap {
       .h-title {

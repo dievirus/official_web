@@ -6,20 +6,37 @@
 */
 import axios from 'axios'
 
+const baseUrl = 'http://47.96.151.153:9300/main'
+
 export function test() {
   return new Promise((resolve, reject) => {
-    // axios({
-    //   method: 'get',
-    //   url:'/apis'
+    axios({
+      method: 'post',
+      url:'/apis'
+    }).then((res) => {
+      resolve(res)
+    }).catch((err) => {
+      console.log(err)
+    })
+    // axios.get('/apis', {
+    //   params: {
+
+    //   }
     // }).then((res) => {
     //   resolve(res)
     // }).catch((err) => {
     //   console.log(err)
     // })
-    axios.get('/apis', {
-      params: {
+  })
+}
 
-      }
+export function query(params) {
+  return new Promise((resolve, reject) => {
+    axios({
+      method: 'post',
+      // url: baseUrl+'/query',
+      url: '/apis',
+      data:params,
     }).then((res) => {
       resolve(res)
     }).catch((err) => {

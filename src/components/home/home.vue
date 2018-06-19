@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <slider></slider>
     <Business></Business>
     <Industry></Industry>
@@ -28,4 +28,7 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
+.home {
+  overflow: hidden;
+}
 </style>

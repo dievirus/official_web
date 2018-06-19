@@ -63,7 +63,7 @@
       
       }
     }
-    .move-enter-active,
+    .move-enter-active, 
     .move-leave-active {
         transition: all 0.7s;
     }

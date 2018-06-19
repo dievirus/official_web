@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/apis':{
-          target:'https://api.douban.com/v2/book/1220562',
+          target:'http://47.96.151.153:9300/main/query',
           changeOrigin:true,
           pathRewrite:{
             '^/apis':''

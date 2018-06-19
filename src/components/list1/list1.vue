@@ -1,7 +1,7 @@
 <template>
   <div class="list1 auto-width">
     <ul class="clearfix">
-      <li class="ll" v-for="(item, index) in ii" :key="index" >
+      <li class="ll" v-for="(item, index) in list" :key="index" >
         <div class="img-wrap" :class="{mask:showIndex==index}" @mouseenter="mouseenter(index)" @mouseleave="mouseleave">
           <img class="img-item" src="./image/test.jpg" alt="">
           <img class="jia" :class="{show:showIndex==index}" src="./image/jia.png" alt="">
@@ -21,14 +21,12 @@
           {w:11},
           {w:22}
         ],
+        
         showIndex: null
       }
     },
     props:{
-      'ii': {
-      },
-      'jj': {
-        default:2
+      'list': {
       }
     },
     methods: {

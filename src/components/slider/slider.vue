@@ -1,21 +1,23 @@
 <template>
   <div class="slider">
-    <swiper :options="swiperOption" ref="mySwiper">
-      <swiper-slide >
-        <img src="./image/bg1.jpg" >
-        <div class="slide1-wrap">
-          <div class="slide1-text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="0.5s">50余载匠心如一</div>
-          <div class="slide1-text2 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="1.1s">工程质量至上</div>
-          <div class="slide1-text3 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="1.6s">安全文明施工第一</div>
-          <div class="slide1-text4 ani" swiper-animate-effect="fadeIn" swiper-animate-duration="" swiper-animate-delay="2s"></div>
-          <div class="slide1-text5 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="2.3s">更多精彩，尽在大划建筑</div>
-        </div>
-        
-      </swiper-slide>
-      <swiper-slide ><img src="./image/bg1.jpg" ></swiper-slide>
-      <swiper-slide ><img src="./image/bg1.jpg" ></swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
+    <div class="slider-wrap">
+      <swiper :options="swiperOption" ref="mySwiper" >
+        <swiper-slide >
+          <img src="./image/bg1.jpg" >
+          <div class="slide1-wrap">
+            <div class="slide1-text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="0.5s">50余载匠心如一</div>
+            <div class="slide1-text2 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="1.1s">工程质量至上</div>
+            <div class="slide1-text3 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="1.6s">安全文明施工第一</div>
+            <div class="slide1-text4 ani" swiper-animate-effect="fadeIn" swiper-animate-duration="" swiper-animate-delay="2s"></div>
+            <div class="slide1-text5 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="" swiper-animate-delay="2.3s">更多精彩，尽在大划建筑</div>
+          </div>
+          
+        </swiper-slide>
+        <swiper-slide ><img src="./image/bg1.jpg" ></swiper-slide>
+        <swiper-slide ><img src="./image/bg1.jpg" ></swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
+    </div>
   </div>
 </template>
 
@@ -33,6 +35,8 @@
           },
           autoplayDisableOnInteraction: false,
           paginationType:"bullets",
+          observer:true,//修改swiper自己或子元素时，自动初始化swiper 
+          observeParents:true,//修改swiper的父元素时，自动初始化swiper 
           pagination : {
             el:'.swiper-pagination',
             type: 'custom',
@@ -88,16 +92,22 @@
   
   .slider {
     margin-top:70px;
-    position:relative;
+    height:600px;
+    overflow: hidden;
     .swiper-wrapper {
+      width:100%;
+      overflow: hidden;
+      position: relative;
       img {
         width:100%;
         display:block;
+        height:600px;
       }
     }
     
     .swiper-slider {
       position: relative;
+      overflow: hidden;
     }
     .slide1-wrap {
       position:absolute;

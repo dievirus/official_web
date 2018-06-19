@@ -4,59 +4,29 @@
     <div class="dynamic-wrap clearfix">
       <div class="d-left">
         <div class="detail-img-wrap">
-          <img src="" alt="">
+          <img :src="leftData.img" alt="">
           <span class="detail-time-l">
-            <div class="day">24</div>
-            <div class="year-month">2018-2</div>
+            <div class="day">{{leftData.day}}</div>
+            <div class="year-month">{{leftData.yearMonth}}</div>
           </span>
         </div>
         <div class="detail-info">
           <div class="clearfix d-title-wrap">
-            <div class="d-title nowrap ll">这里是标题xxxxx-确实是标题</div>
-            <div class="d-time rr">2018-2-24</div>
+            <div class="d-title nowrap ll">{{leftData.title}}</div>
+            <div class="d-time rr">{{leftData.yearMonthDay}}</div>
           </div>
-          <div class="d-content">
-            这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容
-            这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容这里是内容
-          </div>
+          <div class="d-content">{{leftData.content}}</div>
         </div>
       </div>
       <div class="d-right">
         <ul>
-          <li class="dynamic-item active-item clearfix">
+          <li v-for="(item, index ) in rightData" :key="item.id" class="dynamic-item clearfix" :class="{'active-item':activeIndex == index}">
             <div class="img-wrap ll">
-              <img src="" alt="">
+              <img src="./test.png" alt="">
             </div>
             <div class="item-info ll">
-              <div class="item-info-title">这里是标题xxxxx-确实是标题这里是标题这里是标题xxxxx-确实是标题这里是标题这里是标题xxxxx-确实是标题这里是标题这里是标题xxxxx-确实是标题这里是标题这里是标题xxxxx-确实是标题这里是标题x</div>
-              <div class="item-info-time">2018-02.24</div>
-            </div>
-          </li>
-          <li class="dynamic-item clearfix">
-            <div class="img-wrap ll">
-              <img src="" alt="">
-            </div>
-            <div class="item-info ll">
-              <div class="item-info-title">这里是标题xxxxx-确实是标题</div>
-              <div class="item-info-time">2018-02.24</div>
-            </div>
-          </li>
-          <li class="dynamic-item clearfix">
-            <div class="img-wrap ll">
-              <img src="" alt="">
-            </div>
-            <div class="item-info ll">
-              <div class="item-info-title">这里是标题xxxxx-确实是标题</div>
-              <div class="item-info-time">2018-02.24</div>
-            </div>
-          </li>
-          <li class="dynamic-item clearfix">
-            <div class="img-wrap ll">
-              <img src="" alt="">
-            </div>
-            <div class="item-info ll">
-              <div class="item-info-title">这里是标题xxxxx-确实是标题</div>
-              <div class="item-info-time">2018-02.24</div>
+              <div class="item-info-title">{{item.title}}</div>
+              <div class="item-info-time">{{item.createTime}}</div>
             </div>
           </li>
         </ul>
@@ -67,8 +37,44 @@
 </template>
 
 <script>
+  import { query } from '@/api/api'
+  import { day , yearMonth , yearMonthDay } from '@/utils/index'
+
   export default {
-    
+    data() {
+      return {
+        leftData:{},
+        rightData:[],
+        activeIndex:0
+      }
+    },
+    mounted() {
+      query({
+        // type: 7
+      }).then((res) => {
+        if(res.data.code == '200') {
+          this.leftData = res.data.data.rows[0]
+          const date = this.leftData.createTime
+          this.leftData.day = day(date)
+          this.leftData.yearMonth = yearMonth(date)
+          this.leftData.yearMonthDay = yearMonthDay(date)
+
+          this.rightData = res.data.data.rows.slice(1,5)
+          this.rightData.map((item) => {
+            item.createTime = yearMonthDay(item.createTime)
+          })
+          console.log(this.rightData)
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
+    computed: {
+      formatDay() {
+        let d = 1
+        return d+1
+      }
+    },
   }
 </script>
 
@@ -78,6 +84,8 @@
   .dynamic {
     overflow:hidden;
     background:#fff;
+    position: relative;
+    z-index: 100;
     .dynamic-wrap {
       width:1200px;
       margin:0 auto;
@@ -114,6 +122,8 @@
         .detail-info {
           background:@color_background_2;
           padding:30px;
+          height:148px;
+          box-sizing: border-box;
           .d-title-wrap {
             color:@color_3;
             font-size:18px;
@@ -133,17 +143,22 @@
         float:left;
         width:510px;
         margin-left:10px;
+        
         .dynamic-item {
           margin-bottom:15px;
           padding:15px;
           background:@color_background_2;
-          &.active-item {
-            background:@color_background_1;
-          }
+          transition:.3s;
           .img-wrap {
             width:160px;
             height:100px;
             background:#999;
+            overflow: hidden;
+            img {
+              width:100%;
+              transform: scale(1);
+              transition: .3s;
+            }
           }
           .item-info {
             margin-left:20px;
@@ -166,13 +181,16 @@
           }
           
         }
-        .dynamic-item {
-          &.active-item {
-            .item-info {
-              .item-info-title,.item-info-time {
-                color:#fff;
-              }
-            }
+        .dynamic-item:hover {
+          background:@color_background_1;
+          transition:.3s;
+          cursor: pointer;
+          .item-info-time,.item-info-title {
+            color:#fff;
+          }
+          img {
+            transform: scale(1.1);
+            transition: .3s;
           }
         }
       }
@@ -189,6 +207,11 @@
       margin:80px auto 80px auto;
       color:#fff;
       text-decoration:none; 
+      transition:.3s;
+    }
+    .show-more:hover {
+      opacity: .8;
+      transition:.3s;
     }
   }
 </style>

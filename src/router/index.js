@@ -7,6 +7,9 @@ const Donate = () => import('components/donate/donate')
 const Home = () => import('components/home/home')
 const Information = () => import('components/information/information')
 const Performance = () => import('components/performance/performance')
+const Detailcontent = () => import('components/detailcontent/detailcontent')
+const List = () => import('components/list2/list2')
+const DetailInfo = () => import('components/detailinfo/detailinfo')
 
 // 关于我们
 const About = () => import('components/about/about')
@@ -53,12 +56,38 @@ export default new Router({
         },
         {
           path:'d',
-          component: About4
+          component: About4,
+          redirect: 'd/list',
+          children: [
+            {
+              path:'list',
+              component: List,
+              meta: {
+                type: 3,
+                
+              }
+            },
+            {
+              path:'detail',
+              component: Detailcontent,
+              redirect: 'detail/e',
+              children: [
+                {
+                  path:'e/:id',
+                  component: DetailInfo,
+                  meta: {
+                    text: '最新业绩'
+                  }
+                }
+              ]
+            },
+          ]
         },
         {
           path:'e',
           component: About5
         },
+        
       ]
     },
     {
@@ -68,7 +97,7 @@ export default new Router({
       children: [
         {
           path:'a',
-          component: Achievement1
+          component: Achievement1,
         },
         {
           path:'b',

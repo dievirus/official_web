@@ -81,6 +81,8 @@
 
   .business {
     background:#f8f8f8;
+    position: relative;
+    z-index: 100;
     overflow: hidden;
     .business-wrap {
       width:1200px;
