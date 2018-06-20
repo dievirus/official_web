@@ -5,7 +5,7 @@
     </transition>
     
     <!-- <DetailInfo></DetailInfo> -->
-    <DetailList :title="title"></DetailList>
+    <DetailList :title="title" :url="url"></DetailList>
   </div>
 </template>
 
@@ -16,16 +16,20 @@
   export default {
     data() {
       return {
-        title: ''
+        title: '',
+        url:''
       }
     },
     components: {
       DetailInfo,
       DetailList
     },
+    mounted() {
+    },
     beforeRouteEnter(to, from, next) {
       next(vm => {
         vm.title = to.meta.text
+        vm.url = to.meta.url
       })
     },
     

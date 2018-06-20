@@ -11,7 +11,7 @@
         {{item.text}}
       </li> -->
       <li v-for="(item,index) in list" :key="item.id" class="nowrap list-item" :class="{'active':currentId == item.id}">
-        <router-link :to="'/about/d/detail/e/'+item.id"><span>{{item.title}}</span></router-link>
+        <router-link :to="url+item.id"><span>{{item.title}}</span></router-link>
       </li>
     </ul>
   </div>
@@ -30,7 +30,8 @@
       }
     },
     props: {
-      'title':{}
+      'title':{},
+      'url':{}
     },
     watch: {
       '$route' (to, from) {
@@ -40,7 +41,6 @@
     },
     mounted() {
       this.currentId = this.$route.params.id
-      console.log(this.currentId)
       query({
         size:this.size
       }).then((res) => {

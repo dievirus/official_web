@@ -10,9 +10,10 @@
     </div>
     <div class="nav-wrap clearfix about-wrap">
       <div class="clearfix auto-width">
-        <router-link to="/achievement/a" ><span>获奖工程</span></router-link>
-        <router-link to="/achievement/b"><span>土建工程</span></router-link>
-        <router-link to="/achievement/c"><span>市政工程</span></router-link>
+        <router-link to="/construction/a" ><span>公会工作</span></router-link>
+        <router-link to="/construction/b" ><span>建筑业协会</span></router-link>
+        <router-link to="/construction/c" ><span>党风廉洁</span></router-link>
+        <router-link to="/construction/d" ><span>党建工作</span></router-link>
       </div>
       
     </div>

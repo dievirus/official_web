@@ -1,7 +1,7 @@
 <template>
   <div class="detail ll">
     <section class="section1">
-      <div class="nav">首页>公司业绩>获奖工程>详情</div>
+      <div class="nav">{{nav}}</div>
       <div class="title">{{title}}</div>
       <div class="date">{{date}}</div>
     </section>
@@ -23,9 +23,15 @@
         title:'',
         date:'',
         img:'',
-        content:''
+        content:'',
+        nav:''
       }
     },  
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+        vm.nav = to.meta.nav
+      })
+    },
     watch: {
       '$route' (to, from) {
         // 对路由变化作出响应...

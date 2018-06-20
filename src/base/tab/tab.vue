@@ -8,10 +8,10 @@
       <router-link to="/home">公司首页</router-link>
       <router-link to="/about">关于我们</router-link>
       <router-link to="/achievement">公司业绩</router-link>
-      <router-link to="/3">投资合作</router-link>
-      <router-link to="/4">公司资讯</router-link>
-      <router-link to="/5">爱心捐赠</router-link>
-      <router-link to="/6">公司党建</router-link>
+      <router-link to="/cooperation">投资合作</router-link>
+      <router-link to="/information">公司资讯</router-link>
+      <router-link to="/donate">爱心捐赠</router-link>
+      <router-link to="/construction">公司党建</router-link>
       <span class="phone">
         <img src="./d_call.png" alt="">
         028-82312656

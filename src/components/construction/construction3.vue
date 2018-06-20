@@ -1,7 +1,7 @@
 <template>
   <div class="about4 auto-width">
   	<div class="sub-title">
-      <span>大事记</span>
+      <span>党风廉洁</span>
     </div>
     <transition name="move">
       <router-view></router-view>

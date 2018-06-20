@@ -1,33 +1,48 @@
 <template>
   <div class="list1 auto-width">
     <ul class="clearfix">
-      <li class="ll" v-for="(item, index) in list" :key="index" >
-        <div class="img-wrap" :class="{mask:showIndex==index}" @mouseenter="mouseenter(index)" @mouseleave="mouseleave">
-          <img class="img-item" src="./image/test.jpg" alt="">
-          <img class="jia" :class="{show:showIndex==index}" src="./image/jia.png" alt="">
-          <div class="mask"></div>
-        </div>
-        <p class="nowrap">{{item.title}}</p>
+      <li class="ll" v-for="(item, index) in list" :key="item.id" >
+        <router-link :to="url+item.id">
+          <div class="img-wrap" :class="{mask:showIndex==index}" @mouseenter="mouseenter(index)" @mouseleave="mouseleave">
+            <img class="img-item" src="./image/test.jpg" alt="">
+            <img class="jia" :class="{show:showIndex==index}" src="./image/jia.png" alt="">
+            <div class="mask"></div>
+          </div>
+          <p class="nowrap">{{item.title}}</p>
+        </router-link>
       </li>
     </ul>
+    <pagination v-if="totalPage>1" :totalPage="totalPage" :pageSize="pageSize" @setPage="setPage"></pagination>
   </div>
 </template>
 
 <script>
+  import { query } from '@/api/api'
+  import Pagination from 'base/pagination/pagination.vue'
+  import { yearMonthDay } from '@/utils/index'
+
   export default {
     data() {
       return {
-        k:[
-          {w:11},
-          {w:22}
-        ],
-        
-        showIndex: null
+        list:[],
+        showIndex: null,
+        type: null,
+        totalPage:0,
+        pageSize:12,
+        url: ''
       }
     },
-    props:{
-      'list': {
-      }
+    components: {
+      Pagination
+    },
+     beforeRouteEnter(to, from, next) {
+      next(vm => {
+        vm.type = to.meta.type
+        vm.url = to.meta.url
+      })
+    },
+    mounted() {
+      this.getList(1)
     },
     methods: {
       mouseenter(index) {
@@ -35,6 +50,30 @@
       },
       mouseleave() {
         this.showIndex = null
+      },
+      getList(page) {
+        query({
+          size:this.pageSize,
+          page:page,
+          // type:this.type
+        }).then((res) => {
+          if(res.data.code == '200') {
+            this.list = res.data.data.rows
+            this.totalPage = Math.ceil((res.data.data.count) / this.pageSize)
+          
+            this.list.map((item) => { 
+              item.createTime = yearMonthDay(item.createTime)
+            })
+
+          }else {
+            alert('请求失败')
+          }
+        }).catch((err) => {
+          console.log(err)
+        })
+      },
+      setPage(current) {
+        this.getList(current)
       }
     }
   }

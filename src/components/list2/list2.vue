@@ -2,7 +2,7 @@
   <div class="list2 auto-width">
     <ul>
       <li v-for="item in list" :key="item.id" class="item clearfix" @click="goDetail(1)">
-        <router-link :to="'/about/d/detail/e/'+item.id">
+        <router-link :to="url+item.id">
           <div class="img-wrap ll">
             <img src="./image/test.jpg" alt="">
           </div>
@@ -31,6 +31,7 @@
         type:null,
         totalPage:0,
         pageSize:6,
+        url:''
       }
     },
     components: {
@@ -39,6 +40,7 @@
     beforeRouteEnter(to, from, next) {
       next(vm => {
         vm.type = to.meta.type
+        vm.url = to.meta.url
       })
     },
     mounted() {
