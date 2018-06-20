@@ -96,7 +96,7 @@
     right:20px;
     top:50%;
     margin-top:-94px;
-    z-index:100;
+    z-index:100000;
     ul {
       position:relative;
     }

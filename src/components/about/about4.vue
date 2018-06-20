@@ -12,7 +12,6 @@
 <script>
   import List2 from 'components/list2/list2.vue'
   import { query } from '@/api/api'
-  import Pagination from 'base/pagination/pagination.vue'
 
   export default {
     data() {
@@ -23,7 +22,6 @@
     },
     components: {
       List2,
-      Pagination
     },
     
     methods: {
