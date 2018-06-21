@@ -1,11 +1,10 @@
 <template>
   <div class="nav">
     <div class="banner">
-      <img src="./image/banner2.jpg" alt="">
+      <img src="./image/banner6.jpg" alt="">
       <div class="banner-content">
-        <h1 class="title1">坚持实施精品战略</h1>
-        <h1 class="title2">坚持打造精品工程</h1>
-        <p class="text">Adhere to the implementation of the boutique strategy to build a high-quality project.</p>
+        <h1 class="title1">敬业之路 以率先垂范引领全员</h1>
+        <p class="text">Dedication to the road to lead by example</p>
       </div>
     </div>
     <div class="nav-wrap clearfix about-wrap">
@@ -34,14 +33,13 @@
   .nav {
     position: relative;
     .banner-content {
-      position: absolute;;
-      width:386px;
-      left:280px;
-      top:50%;
-      margin-top:-110px;
+      position: absolute;
+      top:25%;
+      width:100%;
       h1 {
         font-size:48px;
         color:#fff;
+        text-align:center;
         &.title2 {
           margin:20px 0;
         }
@@ -56,9 +54,11 @@
       }
       .text {
         font-size:20px;
+        width:560px;
+        margin:0 auto;
+        text-align: center;
         color:@color_2;
         opacity: .5;
-        text-align: left;
         line-height:28px;
         font-family: "PingFangSC-Medium"
       
