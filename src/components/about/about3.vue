@@ -1,41 +1,53 @@
 <template>
-  <div class="about3 auto-width">
-    <div class="sub-title">
+  <div class="clearfix auto-width">
+    <div class="sub-title auto-width">
       <span>荣誉资质</span>
     </div>
-    <List1 :ii="jjjj"></List1>
-  	<pagination :pageSize="pageSize" @setPage="setPage"></pagination>
+    <transition name="move">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-  import Pagination from 'base/pagination/pagination.vue'
   import List1 from 'components/list1/list1.vue'
-  
+  import { query } from '@/api/api'
+  import Pagination from 'base/pagination/pagination.vue'
 
   export default {
     data() {
       return {
-        pageSize: 10,
-        jjjj: [
-          {title:11},
-          {title:22},
-          {title:'这是一个非常长的标题测试这是一个非常长的标题测试这是一个非常长的标题测试这是一个非常长的标题测试'},
-          {title:44},
-          {title:55}
-        ],
+        list: [],
+        totalPage:0,
+        pageSize:12,
       }
     },
     components: {
-      Pagination,
-      List1
+      List1,
+      Pagination
     },
-    methods: {
-      setPage(current) {
-      }
+    watch: {
+    '$route' (to, from) {
+      // 对路由变化作出响应...
+      console.log(this.$route.params)
     }
+  }
   }
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
+
+.move-enter-active, 
+  .move-leave-active {
+      transition: all 1.5s;
+  }
+
+  .move-enter,
+  .move-leave{
+      transform: translate3d(0px, 20px, 0);
+      opacity: 0;
+  }
+  .move-enter-to {
+    opacity: 1;
+  }
 </style>

@@ -94,7 +94,9 @@
   .sidebar {
     position:fixed;
     right:20px;
-    top:50%;
+    bottom:40px;
+    padding:5px;
+    background:rgba(0,0,0,0.5);
     margin-top:-94px;
     z-index:100000;
     ul {

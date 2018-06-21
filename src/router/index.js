@@ -75,7 +75,34 @@ export default new Router({
         },
         {
           path:'c',
-          component: About3
+          component: About3,
+          redirect: 'c/list',
+          children: [
+            {
+              path: 'list',
+              component: List1,
+              meta: {
+                type: 2,
+                url:'/about/c/detail/e/',
+              }
+            },
+            {
+              path:'detail',
+              component: Detailcontent,
+              redirect: 'detail/e',
+              children: [
+                {
+                  path:'e/:id',
+                  component: DetailInfo,
+                  meta: {
+                    text: '荣誉资质',
+                    url:'/about/c/detail/e/',
+                    nav:'首页>关于我们>荣誉资质>详情'
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           path:'d',

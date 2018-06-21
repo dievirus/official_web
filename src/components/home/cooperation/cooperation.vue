@@ -3,9 +3,64 @@
     <div class="h-title">合作伙伴</div>
     <div class="cooperation-wrap">
       <ul class="clearfix" >
-        <li  v-for="item in list" :key="item.id" class="item ll">
+        <li class="item ll">
           <div class="img-wrap">
-            <img src="" alt="">
+            <img src="./image/1.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/2.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/3.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/4.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/5.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/6.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/7.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/8.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/9.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/10.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/11.jpg" alt="">
+          </div>
+        </li>
+        <li class="item ll">
+          <div class="img-wrap">
+            <img src="./image/12.jpg" alt="">
           </div>
         </li>
       </ul>
@@ -17,9 +72,6 @@
   export default {
     data() {
       return {
-        list:[
-          {id:1},{id:2},{id:3},{id:4},{id:5},{id:6},{id:7},{id:8},{id:9},{id:10},{id:11},{id:12}
-        ]
       }
     },
     mounted() {
@@ -49,7 +101,9 @@
           .img-wrap {
             width:210px;
             height:140px;
-            background:#333;
+            img {
+              width:100%;
+            }
           }
         }
       }

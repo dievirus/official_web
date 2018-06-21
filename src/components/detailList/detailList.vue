@@ -1,9 +1,8 @@
 <template>
   <div class="detail-list">
     <div class="title">
-      <span class="ll"></span>
+      <span></span>
       <p class="title-text">{{title}}</p>
-      <span class="rr"></span>
       </div>
     <ul>
       <!-- <li v-for="(item, index) in list" :key="index" class="nowrap list-item">
@@ -66,12 +65,19 @@
       font-size:18px;
       position: relative;
       margin-bottom:30px;
+      text-align: center;
       p {
         padding:0 5px;
+        background:#fff;
         display:inline-block;
+        position: relative;
+        z-index:100;
       }
       span {
-        width:100px;
+        width:100%;
+        position:absolute;
+        left:0;
+        top:0;
         height:1px;
         background:#e0e0e0;
         margin-top:7px;
