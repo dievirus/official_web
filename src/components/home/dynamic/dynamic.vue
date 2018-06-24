@@ -3,36 +3,40 @@
     <div class="h-title">公司动态</div>
     <div class="dynamic-wrap clearfix">
       <div class="d-left">
-        <div class="detail-img-wrap">
-          <img :src="leftData.img" alt="">
-          <span class="detail-time-l">
-            <div class="day">{{leftData.day}}</div>
-            <div class="year-month">{{leftData.yearMonth}}</div>
-          </span>
-        </div>
-        <div class="detail-info">
-          <div class="clearfix d-title-wrap">
-            <div class="d-title nowrap ll">{{leftData.title}}</div>
-            <div class="d-time rr">{{leftData.yearMonthDay}}</div>
+        <router-link :to="'/information/b/detail/e/'+leftData.id" class="clearfix">
+          <div class="detail-img-wrap">
+            <img :src="leftData.img" alt="">
+            <span class="detail-time-l">
+              <div class="day">{{leftData.day}}</div>
+              <div class="year-month">{{leftData.yearMonth}}</div>
+            </span>
           </div>
-          <div class="d-content">{{leftData.content}}</div>
-        </div>
+          <div class="detail-info">
+            <div class="clearfix d-title-wrap">
+              <div class="d-title nowrap ll">{{leftData.title}}</div>
+              <div class="d-time rr">{{leftData.yearMonthDay}}</div>
+            </div>
+            <div class="d-content">{{leftData.content}}</div>
+          </div>
+        </router-link>
       </div>
       <div class="d-right">
         <ul>
-          <li v-for="(item, index ) in rightData" :key="item.id" class="dynamic-item clearfix" :class="{'active-item':activeIndex == index}">
-            <div class="img-wrap ll">
-              <img src="./test.png" alt="">
-            </div>
-            <div class="item-info ll">
-              <div class="item-info-title">{{item.title}}</div>
-              <div class="item-info-time">{{item.createTime}}</div>
-            </div>
+          <li v-for="(item, index ) in rightData" :key="item.id" class="dynamic-item" :class="{'active-item':activeIndex == index}">
+            <router-link :to="'/information/b/detail/e/'+item.id" class="clearfix">
+              <div class="img-wrap ll">
+                <img src="./test.png" alt="">
+              </div>
+              <div class="item-info ll">
+                <div class="item-info-title">{{item.title}}</div>
+                <div class="item-info-time">{{item.createTime}}</div>
+              </div>
+            </router-link>
           </li>
         </ul>
       </div>
     </div>
-    <a class="show-more" href="javascript:void(0)">查看更多</a>
+    <router-link class="show-more" to="/information/b/list">查看更多</router-link>
   </div>
 </template>
 
@@ -90,6 +94,9 @@
       width:1200px;
       margin:0 auto;
       .d-left {
+        a {
+          text-decoration: none;
+        }
         float:left;
         width:680px;
         height:420px;
@@ -136,6 +143,7 @@
             line-height:20px;
             font-size:14px;
             color:@color_4;
+            text-decoration: none;
           }
         }
       }

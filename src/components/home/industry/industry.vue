@@ -2,25 +2,14 @@
   <div class="industry">
     <div class="industry-wrap">
       <div class="h-title">公司产业</div>
-      <div class="i-swiper-wrap">
+      <div class="i-swiper-wrap" >
         <swiper :options="swiperOption" ref="mySwiper">
-          <swiper-slide >
-            <img src="./image/w.png" >
-            <div class="i-text nowrap">这是一个长的标题，测试不换行测试不换行测试不换行测试不换行</div>
+          <swiper-slide v-for="(item,index) in list" :key="index">
+            <router-link :to="'/information/b/detail/e/'+item.id" >
+              <img :src="item.img" >
+              <div class="i-text nowrap">{{item.title}}</div>
+              </router-link>
           </swiper-slide>
-          <swiper-slide >
-            <img src="./image/bg.jpg" >
-            <div class="i-text">公司项目案例2</div>
-          </swiper-slide>
-          <swiper-slide >
-            <img src="./image/w.png" >
-            <div class="i-text">公司项目案例3</div>
-          </swiper-slide>
-          <swiper-slide >
-            <img src="./image/bg.jpg" >
-            <div class="i-text">公司项目案例4</div>
-          </swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
@@ -33,13 +22,16 @@
 <script>
   import 'swiper/dist/css/swiper.css'
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import { query } from '@/api/api'
 
   export default {
     data () {
       return {
+        list:[],
+        test:[1,2,3,4],
         swiperOption: {
           autoplay: {
-            delay: 300000,
+            delay: 3000,
             disableOnInteraction: false,
             
           },
@@ -47,24 +39,18 @@
           effect : 'coverflow',
           slidesPerView: 3,
           spaceBetween : 30,
+          notNextTick: true,
           centeredSlides: true,
           prevButton:'.swiper-button-prev',
           nextButton:'.swiper-button-next',
           autoplayDisableOnInteraction: false,
+          observer:true,//修改swiper自己或子元素时，自动初始化swiper  
+          observeParents:true,//修改swiper的父元素时，自动初始化swiper  
           navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           },
           loop: true,
-          on:{
-            init: function(){
-              swiperAnimateCache(this); //隐藏动画元素 
-              swiperAnimate(this); //初始化完成开始动画
-            }, 
-            slideChangeTransitionEnd: function(){ 
-              swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
-            } 
-          }
         }
       }
     },
@@ -78,8 +64,18 @@
       }
     },
     mounted () {
+      query({
+        // type: 7
+      }).then((res) => {
+        if(res.data.code == '200') {
+          this.list = res.data.data.rows.slice(0,6)
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
     },
-    
+    wacth: {
+    }
   }
 </script>
 
