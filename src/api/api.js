@@ -35,8 +35,18 @@ export function query(params) {
     axios({
       method: 'post',
       // url: baseUrl+'/query',
-      url: '/apis',
+      // url: '/apis',
+      
+      url:'http://47.96.151.153:9300/main/query',
+      // url:'http://dahuajianzhu:9300/main/query',
       data:params,
+      // transformReques:[function (data) {
+      //   let ret = ''
+      //   for (let it in data) {
+      //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+      //   }
+      //   return ret
+      // }]
     }).then((res) => {
       resolve(res)
     }).catch((err) => {

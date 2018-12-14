@@ -1,7 +1,7 @@
 <template>
   <div class="clearfix auto-width">
     <div class="sub-title auto-width">
-      <span>土建工程</span>
+      <span>工程动态</span>
     </div>
     <transition name="move">
       <router-view></router-view>
@@ -38,16 +38,18 @@
 <style scoped lang="less" rel="stylesheet/less">
 
 .move-enter-active, 
-  .move-leave-active {
-      transition: all 1.5s;
-  }
+    .move-leave-active {
+        transition: all .7s;
+        -webkit-transition: all .7s;
+    }
 
-  .move-enter,
-  .move-leave{
-      transform: translate3d(0px, 20px, 0);
-      opacity: 0;
-  }
-  .move-enter-to {
-    opacity: 1;
-  }
+    .move-enter,
+    .move-leave{
+        transform: translate3d(0, 10px, 0);
+        -webkit-transform: translate3d(0, 10px, 0);
+        opacity: 0;
+    }
+    .move-enter-to {
+      opacity: 1;
+    }
 </style>

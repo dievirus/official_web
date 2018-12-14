@@ -10,9 +10,9 @@
     </div>
     <div class="nav-wrap clearfix about-wrap">
       <div class="clearfix auto-width">
-        <router-link to="/achievement/a" ><span>获奖工程</span></router-link>
-        <router-link to="/achievement/b"><span>土建工程</span></router-link>
-        <router-link to="/achievement/c"><span>市政工程</span></router-link>
+        <router-link to="/achievement/d" ><span>工程案例展示</span></router-link>
+        <router-link to="/achievement/a"><span>获奖工程</span></router-link>
+        <router-link to="/achievement/b"><span>工程动态</span></router-link>
       </div>
       
     </div>
@@ -35,7 +35,7 @@
     .banner-content {
       position: absolute;;
       width:386px;
-      left:280px;
+      left:380px;
       top:50%;
       margin-top:-110px;
       h1 {
@@ -65,12 +65,14 @@
     }
     .move-enter-active, 
     .move-leave-active {
-        transition: all 0.7s;
+        transition: all .7s;
+        -webkit-transition: all .7s;
     }
 
     .move-enter,
     .move-leave{
         transform: translate3d(0, 10px, 0);
+        -webkit-transform: translate3d(0, 10px, 0);
         opacity: 0;
     }
     .move-enter-to {

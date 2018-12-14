@@ -4,17 +4,17 @@
       <li v-for="item in list" :key="item.id" class="item clearfix" @click="goDetail(1)">
         <router-link :to="url+item.id">
           <div class="img-wrap ll">
-            <img src="./image/test.jpg" alt="">
+            <img :src="item.img" alt="">
           </div>
           <div class="content ll">
             <div class="title">{{item.title}}</div>
-            <div class="info">{{item.contentStr}}</div>
+            <div class="info nowrap2">{{item.contentStr}}</div>
             <div class="date">{{item.createTime}}</div>  
           </div>
         </router-link>  
       </li>
     </ul>
-    <pagination :totalPage="totalPage" :pageSize="pageSize" @setPage="setPage"></pagination>
+    <pagination v-if="totalPage>1" :totalPage="totalPage" :pageSize="pageSize" @setPage="setPage"></pagination>
   </div>
 </template>
 
@@ -45,7 +45,7 @@
     },
     mounted() {
       this.$nextTick(() => {
-        this.getList()
+        this.getList(1)
       })
     },
     methods: {
@@ -53,7 +53,7 @@
         query({
           size:this.pageSize,
           page:page,
-          // type:this.type
+          type:this.type
         }).then((res) => {
           if(res.data.code == '200') {
             this.list = res.data.data.rows
@@ -61,7 +61,14 @@
 
             this.list.map((item) => {
               item.createTime = yearMonthDay(item.createTime)
+              if(!item.img) {
+                item.img = '/static/image/default1.png'
+              }else {
+                item.img = 'http://47.96.151.153:9000/' + item.img
+              }
             })
+
+            
 
           }else {
             alert('请求失败')
@@ -93,8 +100,10 @@
       .img-wrap {
         width:240px;
         height:200px;
+        overflow: hidden;
         img {
           width:100%;
+          height:100%;
           display:block;
         }
       }
@@ -114,6 +123,8 @@
           color:@color_3;
           font-size:14px;
           line-height:24px;
+          height:44px;
+
         }
         .date {
           color:@color_4;

@@ -4,7 +4,7 @@
       <li class="ll" v-for="(item, index) in list" :key="item.id" >
         <router-link :to="url+item.id">
           <div class="img-wrap" :class="{mask:showIndex==index}" @mouseenter="mouseenter(index)" @mouseleave="mouseleave">
-            <img class="img-item" src="./image/test.jpg" alt="">
+            <img :src="item.img" alt="" class="imgItem">
             <img class="jia" :class="{show:showIndex==index}" src="./image/jia.png" alt="">
             <div class="mask"></div>
           </div>
@@ -39,10 +39,14 @@
       next(vm => {
         vm.type = to.meta.type
         vm.url = to.meta.url
+
       })
     },
     mounted() {
-      this.getList(1)
+      this.$nextTick(() => {
+        this.getList(1) 
+      })
+      
     },
     methods: {
       mouseenter(index) {
@@ -55,7 +59,7 @@
         query({
           size:this.pageSize,
           page:page,
-          // type:this.type
+          type:this.type
         }).then((res) => {
           if(res.data.code == '200') {
             this.list = res.data.data.rows
@@ -63,7 +67,14 @@
           
             this.list.map((item) => { 
               item.createTime = yearMonthDay(item.createTime)
+              if(!item.img) {
+                item.img = '/static/image/default2.png'
+              }else {
+                item.img = 'http://47.96.151.153:9000/' + item.img
+              }
             })
+
+            
 
           }else {
             alert('请求失败')
@@ -83,6 +94,7 @@
   @import "~common/less/variable.less";
 
   .list1 {
+    padding-bottom:30px;
     ul {
       width:100%;
       li {
@@ -96,6 +108,10 @@
           box-sizing: border-box;
           overflow: hidden;
           cursor: pointer;
+          .imgItem {
+            width:100%;
+            height:200px;
+          }
           .img-item {
             display:block;
             width:100%;
@@ -106,14 +122,16 @@
             position: absolute;
             left:50%;
             top:0%;
-            margin-left:-30px;
+            margin-left:-20px;
             opacity: 0;
             transition:.5s;
             z-index:10;
+            width:40px;
+            height:40px;
             &.show {
               opacity: .5;
               transition:.5s;
-              transform:translate3d(0,60px,0);
+              transform:translate3d(0,70px,0);
             }
           }
           .mask {

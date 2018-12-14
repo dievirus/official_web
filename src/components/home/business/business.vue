@@ -2,7 +2,7 @@
   <div class="business">
     <div class="h-title">公司业务</div>
     <div class="business-wrap">
-      <ul class="clearfix">
+      <ul class="clearfix" @mouseleave="leaveAll">
         <li class="b-item" @mouseenter="mouseenter(1)">
           <img v-show="activeIndex!=1" src="./image/fw.png" alt="">
           <img v-show="activeIndex==1" src="./image/fw_on.png" alt="">
@@ -53,6 +53,16 @@
           <img v-show="activeIndex==10" src="./image/shig_on.png" alt="">
           施工劳务承包不分等级
         </li>
+        <li class="b-item" @mouseenter="mouseenter(11)">
+          <img v-show="activeIndex!=11" src="./image/gang.png" alt="">
+          <img v-show="activeIndex==11" src="./image/gang_on.png" alt="">
+          钢结构工程专业承包贰级
+        </li>
+        <li class="b-item" @mouseenter="mouseenter(12)">
+          <img v-show="activeIndex!=12" src="./image/other1.png" alt="">
+          <img v-show="activeIndex==12" src="./image/other1_on.png" alt="">
+          业务拓展中
+        </li>
       </ul>
     </div>
   </div>
@@ -71,6 +81,10 @@
       },
       mouseleave() {
         this.activeIndex = '';
+      },
+      leaveAll() {
+        this.activeIndex = 0
+        console.log(this.activeIndex)
       }
     }
   }
@@ -90,7 +104,7 @@
       .b-item {
         text-align:center;
         float:left;
-        width:20%;
+        width:25%;
         color:@color_4;
         height:135px;
         margin-bottom:60px;
@@ -99,6 +113,9 @@
           display:block;
           margin:0 auto 20px auto;
         }
+      }
+      .b-item:hover {
+        color:@color_5;
       }
     }
   }

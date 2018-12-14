@@ -5,10 +5,6 @@
       <p class="title-text">{{title}}</p>
       </div>
     <ul>
-      <!-- <li v-for="(item, index) in list" :key="index" class="nowrap list-item">
-        <span class="active"></span>
-        {{item.text}}
-      </li> -->
       <li v-for="(item,index) in list" :key="item.id" class="nowrap list-item" :class="{'active':currentId == item.id}">
         <router-link :to="url+item.id"><span>{{item.title}}</span></router-link>
       </li>
@@ -30,7 +26,8 @@
     },
     props: {
       'title':{},
-      'url':{}
+      'url':{},
+      'type':{}
     },
     watch: {
       '$route' (to, from) {
@@ -39,17 +36,24 @@
       }
     },
     mounted() {
+      
+      setTimeout(() => {
+         query({
+          size:this.size,
+          type:this.type
+        }).then((res) => {
+          if(res.data.code == '200') {
+            this.list = res.data.data.rows
+            console.log(this.list)
+          }else {
+            alert('请求失败')
+          }
+        })
+      },100)
+
       this.currentId = this.$route.params.id
-      query({
-        size:this.size
-      }).then((res) => {
-        if(res.data.code == '200') {
-          this.list = res.data.data.rows
-          console.log(this.list)
-        }else {
-          alert('请求失败')
-        }
-      })
+      console.log(this.currentId)
+      
     }
   }
 </script>
@@ -60,7 +64,6 @@
   .detail-list {
     float:right;
     width:282px;
-    margin-top:162px;
     .title {
       font-size:18px;
       position: relative;

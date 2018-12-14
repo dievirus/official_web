@@ -1,12 +1,20 @@
 <template>
   <div class="about3 auto-width">
+    <transition name="an">
+      <div v-show="bigMask" class="img-mask" style>
+        <div class="b-img-wrap">
+          <img :src="bigImg" alt="">
+          <div class="close" @click="close">X</div>
+        </div>
+      </div>
+    </transition>
   	<div class="sub-title">
       <span>荣誉资质</span>
     </div>
     <div class="list1 auto-width">
       <ul class="clearfix" v-show="currentPage == 1">
         <li class="ll"  v-for="(item, index) in imgList1" :key="index" >
-          <div class="img-wrap" :class="{mask:showIndex==index}" @mouseenter="mouseenter(index)" @mouseleave="mouseleave">
+          <div class="img-wrap" :class="{mask:showIndex==index}" @mouseenter="mouseenter(index)" @mouseleave="mouseleave" @click="scale(item.src)">
             <img class="img-item" :src="item.src" alt="">
             <img class="jia" :class="{show:showIndex==index}" src="./image/jia.png" alt="">
             <div class="mask"></div>
@@ -59,6 +67,7 @@
       </li>
     </ul>
   </div>
+  
   </div>
 </template>
 
@@ -68,6 +77,8 @@
   export default {
     data() {
       return {
+        bigImg:'',
+        bigMask:false,
         showIndex: null,
         totalPage:4,
         isPrev:'',
@@ -311,6 +322,16 @@
       },
       mouseleaveNext() {
         this.isNext = false
+      },
+      scale(src) {
+        this.bigImg = src
+        this.bigMask = true
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+      
+      },
+      close() {
+        this.bigMask = false
+        document.getElementsByTagName('body')[0].style.overflow = 'auto'
       }
     }
   }
@@ -344,14 +365,16 @@
               position: absolute;
               left:50%;
               top:0%;
-              margin-left:-30px;
+              margin-left:-20px;
               opacity: 0;
               transition:.5s;
               z-index:10;
+              width:40px;
+              height:40px;
               &.show {
                 opacity: .5;
                 transition:.5s;
-                transform:translate3d(0,60px,0);
+                transform:translate3d(0,70px,0);
               }
             }
             .mask {
@@ -378,6 +401,7 @@
             font-size:18px;
             margin-top:20px;
             width:100%;
+
           
           }
         }
@@ -423,5 +447,52 @@
         color:#fff;
       }
     }
+
+    
   }
+  .img-mask {
+      position: fixed;
+      z-index: 99999;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,.8);
+      top:0;
+      left:0;
+      .b-img-wrap {
+        
+        position: relative;
+        display:inline-block;
+        width:400px;
+        left:50%;
+        margin-left:-200px;
+        margin-top:300px;
+        img {
+          display:block;
+          width:100%;
+        }
+        .close {
+          position: absolute;
+          top:-15px;
+          right:-15px;
+          color:#fff;
+          font-size:20px;
+          border: 1px solid #fff;
+          width:30px;
+          height:30px;
+          text-align: center;
+          line-height: 30px;
+          border-radius: 100%;
+          opacity: .7;
+          cursor: pointer;
+        }
+      }
+    }
+    .an-enter-active,
+    .an-leave-active {
+      transition: .5s;
+    }
+    .an-enter,
+    .an-leave-to {
+      opacity: 0;
+    }
 </style>

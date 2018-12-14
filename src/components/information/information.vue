@@ -34,7 +34,7 @@
     .banner-content {
       position: absolute;
       width:100%;
-      top:25%;
+      top:40%;
       text-align: center;
       h1 {
         font-size:48px;
@@ -66,12 +66,14 @@
     }
     .move-enter-active, 
     .move-leave-active {
-        transition: all 0.7s;
+        transition: all .7s;
+        -webkit-transition: all .7s;
     }
 
     .move-enter,
     .move-leave{
         transform: translate3d(0, 10px, 0);
+        -webkit-transform: translate3d(0, 10px, 0);
         opacity: 0;
     }
     .move-enter-to {

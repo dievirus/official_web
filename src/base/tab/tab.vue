@@ -1,17 +1,14 @@
 <template>
-  <div class="tab">
-    <div class="tab-wrap">
-      <a href="javascript:void(0)" class="logo">
-        <img src="./logo.png" alt="">
-        大划建筑
-      </a>
-      <router-link to="/home">公司首页</router-link>
-      <router-link to="/about">关于我们</router-link>
-      <router-link to="/achievement">公司业绩</router-link>
-      <router-link to="/cooperation">投资合作</router-link>
-      <router-link to="/information">公司资讯</router-link>
-      <router-link to="/donate">爱心捐赠</router-link>
-      <router-link to="/construction">公司党建</router-link>
+  <div class="tab" :class="{move:isMove}">
+    <div class="tab-wrap" >
+      <router-link to="/"><img src="./logo.png" alt="" style="margin-top:16px;float:left;margin-right:70px;"></router-link>
+      <router-link to="/home" class="item">公司首页</router-link>
+      <router-link to="/about" class="item">关于我们</router-link>
+      <router-link to="/achievement" class="item">公司业绩</router-link>
+      <router-link to="/cooperation" class="item">投资合作</router-link>
+      <router-link to="/information" class="item">公司资讯</router-link>
+      <router-link to="/donate" class="item">爱心捐赠</router-link>
+      <router-link to="/construction" class="item">公司党建</router-link>
       <span class="phone">
         <img src="./d_call.png" alt="">
         028-82312656
@@ -22,6 +19,27 @@
 
 <script>
   export default {
+    data() {
+      return {
+        isMove:false
+      }
+    },
+    mounted() {
+      this.scroll()
+    },
+    methods: {
+      scroll() {
+         window.onscroll= () => {
+           let t = document.documentElement.scrollTop||document.body.scrollTop
+           if(t > 0) {
+             this.isMove = true
+           }else {
+             this.isMove = false
+           }
+           
+         }
+      }
+    }
     
   }
 </script>
@@ -36,8 +54,11 @@
     top:0;
     height:70px;
     line-height:70px;
-    text-align:center;
-    background:#000;  
+    transition:.3s;
+    &.move {
+      background:rgba(0,0,0,.8);
+      transition:.3s;
+    }
     .tab-wrap {
       width:1200px;
       margin:0 auto;
@@ -60,12 +81,20 @@
     }
     .phone {
       margin-left:40px;
+      float: right;
       img {
         width:30px;
         height:30px;
       }
       font-size:16px;
       color:@color_2;
+    }
+    .item {
+      transition:.2s;
+    }
+    .item:hover {
+      color:#fff;
+      transition:.2s;
     }
   }
 </style>

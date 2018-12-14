@@ -5,7 +5,7 @@
     </transition>
     
     <!-- <DetailInfo></DetailInfo> -->
-    <DetailList :title="title" :url="url"></DetailList>
+    <DetailList :title="title" :url="url" :type="type"></DetailList>
   </div>
 </template>
 
@@ -17,7 +17,8 @@
     data() {
       return {
         title: '',
-        url:''
+        url:'',
+        type:''
       }
     },
     components: {
@@ -30,6 +31,7 @@
       next(vm => {
         vm.title = to.meta.text
         vm.url = to.meta.url
+        vm.type = to.meta.type
       })
     },
     

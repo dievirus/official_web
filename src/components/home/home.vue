@@ -23,7 +23,9 @@
       Industry,
   		Dynamic,
   		Cooperation
-  	}
+    },
+    mounted() {
+    }
   }
 </script>
 

@@ -2,9 +2,9 @@
   <div id="app">
     <tab></tab>
     <Sidebar></Sidebar>
-    <transition name="move">
+    <!-- <transition name="move"> -->
       <router-view class="content"></router-view>
-    </transition>
+    <!-- </transition> -->
     <Footer></Footer>
   </div>
 </template>
@@ -27,17 +27,17 @@
   #app {
     min-width:1000px;
   }
-  .move-enter-active, 
-  .move-leave-active {
-      transition: all 1.5s;
-  }
+  // .move-enter-active, 
+  // .move-leave-active {
+  //     transition: all 1.5s;
+  // }
 
-  .move-enter,
-  .move-leave{
-      transform: translate3d(0px, 20px, 0);
-      opacity: 0;
-  }
-  .move-enter-to {
-    opacity: 1;
-  }
+  // .move-enter,
+  // .move-leave{
+  //     transform: translate3d(0px, 20px, 0);
+  //     opacity: 0;
+  // }
+  // .move-enter-to {
+  //   opacity: 1;
+  // }
 </style>

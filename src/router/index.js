@@ -25,6 +25,7 @@ const Achievement = () => import('components/achievement/achievement')
 const Achievement1 = () => import('components/achievement/achievement1')
 const Achievement2 = () => import('components/achievement/achievement2')
 const Achievement3 = () => import('components/achievement/achievement3')
+const Achievement4 = () => import('components/achievement/achievement4')
 
 // 投资合作
 const cooperation = () => import('components/cooperation/cooperation')
@@ -51,6 +52,7 @@ const construction4 = () => import('components/construction/construction4')
 Vue.use(Router)
 
 export default new Router({
+  // mode:'history',
   routes: [
     {
       path: '/',
@@ -86,7 +88,7 @@ export default new Router({
               path:'list',
               component: List,
               meta: {
-                type: 3,
+                type: 14,
                 url:'/about/d/detail/e/',
               }
             },
@@ -99,9 +101,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '最新业绩',
+                    text: '最新事记',
                     url:'/about/d/detail/e/',
-                    nav:'首页>关于我们>大事记>详情'
+                    nav:'首页>关于我们>大事记>详情',
+                    type:14
                   }
                 }
               ]
@@ -118,7 +121,7 @@ export default new Router({
     {
       path: '/achievement',
       component: Achievement,
-      redirect: '/achievement/a',
+      redirect: '/achievement/d',
       children: [
         {
           path:'a',
@@ -142,9 +145,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '获奖工程',
+                    text: '最新获奖工程',
                     url:'/achievement/a/detail/e/',
-                    nav:'首页>公司业绩>获奖工程>详情'
+                    nav:'首页>公司业绩>获奖工程>详情',
+                    type:1
                   }
                 }
               ]
@@ -173,9 +177,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '土建工程',
+                    text: '最新工程动态',
                     url:'/achievement/b/detail/e/',
-                    nav:'首页>公司业绩>土建工程>详情'
+                    nav:'首页>公司业绩>工程动态>详情',
+                    type:2
                   }
                 }
               ]
@@ -204,9 +209,42 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '市政工程',
+                    text: '最新市政工程',
                     url:'/achievement/c/detail/e/',
-                    nav:'首页>公司业绩>市政工程>详情'
+                    nav:'首页>公司业绩>市政工程>详情',
+                    type:3
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          path:'d',
+          component: Achievement4,
+          redirect: 'd/list',
+          children: [
+            {
+              path: 'list',
+              component: List1,
+              meta: {
+                type: 15,
+                url:'/achievement/d/detail/e/',
+              }
+            },
+            {
+              path:'detail',
+              component: Detailcontent,
+              redirect: 'detail/e',
+              children: [
+                {
+                  path:'e/:id',
+                  component: DetailInfo,
+                  meta: {
+                    text: '最新工程案例',
+                    url:'/achievement/d/detail/e/',
+                    nav:'首页>公司业绩>工程案例>详情',
+                    type:15
                   }
                 }
               ]
@@ -229,7 +267,7 @@ export default new Router({
               path:'list',
               component: List,
               meta: {
-                type: 5,
+                type: 4,
                 url:'/cooperation/a/detail/e/'
               }
             },
@@ -244,7 +282,8 @@ export default new Router({
                   meta: {
                     text: '最新合作',
                     url:'/cooperation/a/detail/e/',
-                    nav:'首页>投资合作>合作动态>详情'
+                    nav:'首页>投资合作>合作动态>详情',
+                    type:4
                   }
                 }
               ]
@@ -284,9 +323,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '通知公告',
+                    text: '最新通知公告',
                     url:'/information/a/detail/e/',
-                    nav:'首页>公司资讯>通知公告>详情'
+                    nav:'首页>公司资讯>通知公告>详情',
+                    type:6
                   }
                 }
               ]
@@ -315,9 +355,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '公司动态',
+                    text: '最新公司动态',
                     url:'/information/b/detail/e/',
-                    nav:'首页>公司资讯>公司动态>详情'
+                    nav:'首页>公司资讯>公司动态>详情',
+                    type:7
                   }
                 }
               ]
@@ -346,9 +387,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '人力资源',
+                    text: '最新人力资源',
                     url:'/information/c/detail/e/',
-                    nav:'首页>公司资讯>人力资源>详情'
+                    nav:'首页>公司资讯>人力资源>详情',
+                    type:8
                   }
                 }
               ]
@@ -384,9 +426,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '爱心捐赠',
+                    text: '最新爱心捐赠',
                     url:'/donate/a/detail/e/',
-                    nav:'首页>爱心捐赠>详情'
+                    nav:'首页>爱心捐赠>详情',
+                    type:9
                   }
                 }
               ]
@@ -422,9 +465,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '公会工作',
+                    text: '最新工会工作',
                     url:'/construction/a/detail/e/',
-                    nav:'首页>公司党建>公会工作>详情'
+                    nav:'首页>公司党建>公会工作>详情',
+                    type:10
                   }
                 }
               ]
@@ -453,9 +497,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '建筑业协会',
+                    text: '最新建筑业协会',
                     url:'/construction/b/detail/e/',
-                    nav:'首页>公司党建>建筑业协会>详情'
+                    nav:'首页>公司党建>建筑业协会>详情',
+                    type:11
                   }
                 }
               ]
@@ -484,9 +529,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '党风廉洁',
+                    text: '最新党风廉洁',
                     url:'/construction/c/detail/e/',
-                    nav:'首页>公司党建>党风廉洁>详情'
+                    nav:'首页>公司党建>党风廉洁>详情',
+                    type:12
                   }
                 }
               ]
@@ -515,9 +561,10 @@ export default new Router({
                   path:'e/:id',
                   component: DetailInfo,
                   meta: {
-                    text: '党建工作',
+                    text: '最新党建工作',
                     url:'/construction/d/detail/e/',
-                    nav:'首页>公司党建>党建工作>详情'
+                    nav:'首页>公司党建>党建工作>详情',
+                    type:13
                   }
                 }
               ]

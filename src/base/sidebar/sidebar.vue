@@ -7,7 +7,7 @@
           <div v-show="activeIndex==1" class="tip-wrap tip-wrap-qq" >
             <div class="zx-box">咨询客服
               <div @mouseenter="mouseenterQq" @mouseleave="mouseleaveQq">
-                <a target="_blank" href="http://wpa.qq.com/msgrd?v=1&uin=240604093&site=qq&menu=yes">
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=1&uin=2943887286&site=qq&menu=yes">
                   <img v-show="!activeQq" src="./image/dianjizix.png" alt="">
                   <img v-show="activeQq" src="./image/dianjizix_on.png" alt="">
                 </a>
@@ -16,36 +16,32 @@
             <ul>
               <li>
                 <label>客&nbsp服q q：</label>
-                <span>8888888</span>
+                <span>2943887286</span>
               </li>
               <li>
                 <label>咨询电话：</label>
                 <span>028-82312656</span>
               </li>
               <li>
-                <label>手&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp机：</label>
-                <span>135-6885-0999</span>
-              </li>
-              <li>
                 <label>工作时间：</label>
-                <span>周一至周日 9:00—20:00</span>
+                <span>周一至周五 9:00 - 20:00</span>
               </li>
             </ul>
           </div>
         </li>
-        <li @mouseenter="mouseenter(2)" @mouseleave="mouseleave()">
+        <li class="mask" @mouseenter="mouseenter(2)" @mouseleave="mouseleave()">
           <img v-show="activeIndex!=2" src="./image/weixin.png" alt="">
           <img v-show="activeIndex==2" src="./image/weixin_on.png" alt="">
           <div v-show="activeIndex==2" class="tip-wrap tip-wrap-wei">
-            <img src="./image/test_code.png" alt="">
+            <img src="./image/code.png" alt="">
           </div>
         </li>
-        <li @mouseenter="mouseenter(3)" @mouseleave="mouseleave()">
+        <li class="mask" @mouseenter="mouseenter(3)" @mouseleave="mouseleave()">
           <img v-show="activeIndex!=3" src="./image/call.png" alt="">
           <img v-show="activeIndex==3" src="./image/call_on.png" alt="">
           <div v-show="activeIndex==3" class="tip-wrap tip-wrap-call">028-8231-2625</div>
         </li>
-        <li @mouseenter="mouseenter(4)" @mouseleave="mouseleave()" @click="goTop">
+        <li class="mask" @mouseenter="mouseenter(4)" @mouseleave="mouseleave()" @click="goTop">
           <img v-show="activeIndex!=4" src="./image/back.png" alt="">
           <img v-show="activeIndex==4" src="./image/backtop_on.png" alt="">
         </li>
@@ -95,10 +91,8 @@
     position:fixed;
     right:20px;
     bottom:40px;
-    padding:5px;
-    background:rgba(0,0,0,0.5);
     margin-top:-94px;
-    z-index:100000;
+    z-index:10000000000000;
     ul {
       position:relative;
     }
@@ -110,6 +104,7 @@
         right:53px;
         top:0;
         background:#fff;
+        box-shadow: 0px 0px 5px #cedbf5;
         border-radius:2px;
         &.tip-wrap-qq {
           width:250px;
@@ -169,7 +164,7 @@
         top: 15px;
         right: -15px;
         border-top: 5px solid transparent;
-        border-left:10px solid #fff;
+        border-left:10px solid #f9f9f9;
         border-right: 5px solid transparent;
         border-bottom: 5px solid transparent;
       }

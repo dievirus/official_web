@@ -1,10 +1,10 @@
 <template>
-  <div class="footer">
+  <div class="footer" v-show="isShow">
     <!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3080727502&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:3080727502:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->
     <div class="footer-wrap">
       <div class="gongzhong">
-        <img src="./image/test_code.png" alt="">
-        <div class="guanzhu">关注公众号</div>
+        <img src="./image/code.png" alt="">
+        <div class="guanzhu">关注微信号</div>
       </div>
       <div class="detail-info">
         <ul>
@@ -16,8 +16,8 @@
             </div>
           </li>
           <li class="o-info">地址：四川省崇州市滨江路南一段19号</li>
-          <li class="o-info">Copyright &copy 2017 大划建筑版权所有</li>
-          <li class="o-info">沪公网安备 31010402000179号 沪ICP备 09000473号-4</li>
+          <li class="o-info">Copyright &copy 2018 大划建筑版权所有</li>
+          <li class="o-info">蜀ICP备18003830号</li>
         </ul>
       </div>
     </div>
@@ -26,7 +26,20 @@
 
 <script>
   export default {
-    
+    data() {
+      return {
+        isShow:false    
+      }
+      
+    },
+    watch:{
+      $route(to,from){
+        this.isShow = false
+        setTimeout(() => {
+          this.isShow = true
+        },200)
+      }
+    },
 
     
   }
@@ -40,7 +53,7 @@
     z-index: 100;
     min-width:1200px;
     height:200px;
-    background:#000;
+    background:#1d2026;
     .footer-wrap {
       position: fixed;
       left:0;

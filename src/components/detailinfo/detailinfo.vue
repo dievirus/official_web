@@ -5,10 +5,10 @@
       <div class="title">{{title}}</div>
       <div class="date">{{date}}</div>
     </section>
-    <section class="section2">
+    <!-- <section class="section2">
       <img :src="img" alt="">
-    </section>
-    <section class="">{{content}}</section>
+    </section> -->
+    <section class="" v-html="content"></section>
   </div>
 </template>
 
@@ -30,6 +30,7 @@
     beforeRouteEnter(to, from, next) {
       next(vm => {
         vm.nav = to.meta.nav
+        
       })
     },
     watch: {
@@ -51,7 +52,13 @@
           this.title = data.title
           this.date = yearMonthDay(data.createTime)
           this.img = data.img
-          this.content = data.contentStr
+          this.content = data.content
+
+          if(!data.img) {
+            this.img = '/static/image/default2.png'
+          }else {
+            this.img = 'http://47.96.151.153:9000/' + this.img
+          }
         })
       }
     }
@@ -63,6 +70,7 @@
 
   .detail {
     width:800px;
+    overflow: hidden;
     .section1 {
       margin-top:30px;
       .nav {
@@ -82,10 +90,10 @@
     }
     .section2 {
       width:100%;
-      height:500px;
-      background:red;
-      opacity: .4;
       margin-bottom:30px;
+      img {
+        width:100%;
+      }
     }
   }
 </style>

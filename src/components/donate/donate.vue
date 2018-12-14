@@ -25,7 +25,7 @@
     position: relative;
     .banner-content {
       position: absolute;
-      top:25%;
+      top:40%;
       width:100%;
       h1 {
         font-size:48px;

@@ -11,6 +11,7 @@ Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
 Vue.use(animate)
 
+
 new Vue({
   el: '#app',
   router,

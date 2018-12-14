@@ -9,7 +9,7 @@
     </div>
     <div class="nav-wrap clearfix about-wrap">
       <div class="clearfix auto-width">
-        <router-link to="/construction/a" ><span>公会工作</span></router-link>
+        <router-link to="/construction/a" ><span>工会工作</span></router-link>
         <router-link to="/construction/b" ><span>建筑业协会</span></router-link>
         <router-link to="/construction/c" ><span>党风廉洁</span></router-link>
         <router-link to="/construction/d" ><span>党建工作</span></router-link>
@@ -17,7 +17,9 @@
       
     </div>
     <transition name="move">
-      <router-view class="about-content"></router-view>
+      <keep-alive>
+        <router-view class="about-content"></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -34,7 +36,7 @@
     position: relative;
     .banner-content {
       position: absolute;
-      top:25%;
+      top:40%;
       width:100%;
       h1 {
         font-size:48px;
@@ -66,12 +68,14 @@
     }
     .move-enter-active, 
     .move-leave-active {
-        transition: all 0.7s;
+        transition: all .7s;
+        -webkit-transition: all .7s;
     }
 
     .move-enter,
     .move-leave{
         transform: translate3d(0, 10px, 0);
+        -webkit-transform: translate3d(0, 10px, 0);
         opacity: 0;
     }
     .move-enter-to {
