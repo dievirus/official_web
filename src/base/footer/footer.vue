@@ -15,7 +15,7 @@
               <div class="phone">028-8231-2656</div>  
             </div>
           </li>
-          <li class="o-info">地址：四川省崇州市滨江路南一段19号</li>
+          <li class="o-info">地址：四川省崇州市崇阳街道向荣街361号附301-303号3层</li>
           <li class="o-info">Copyright &copy 2018 大划建筑版权所有</li>
           <li class="o-info">蜀ICP备18003830号</li>
         </ul>
